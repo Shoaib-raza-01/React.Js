@@ -19,31 +19,37 @@ export default function TextForm(props) {
         backgroundColor : "white"
       })
       setBtn("Enable Dark Mode")
-
+      props.showAlert("Light mode Enabled","success");
     }else{
       myDark({
         color : "white",
         backgroundColor : "#405368"
-      })
-      setBtn("Enable Light Mode")
+      });
+      setBtn("Enable Light Mode");
+      props.showAlert("Dark mode Enabled","success");
     }
   }
   const clickUpHandler = ()=> {
-      console.log("Button Clicked")
+      console.log("Button Clicked");
       var newText = text.toUpperCase()
       setText(newText)
+      props.showAlert("Text was successfully converted to uppercase","success");
   } 
 
   const clickLoHandler = ()=> {
     console.log("Button Clicked")
     var newText = text.toLowerCase()
     setText(newText)
+    props.showAlert("Text was successfully converted to lowercase","success");
+
 }
 
 const clickCopyHandler = ()=>{
     var text = document.getElementById("txt")
     // text.select()                                //selects the text
     navigator.clipboard.writeText(text.value)
+    props.showAlert("Text was successfully copied to Clipboard","success");
+
 }
 
 

@@ -1,32 +1,54 @@
 import './App.css';
+import React, {useState} from 'react'
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import React, {useState} from 'react'
+import Alert from './components/Alert';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import About from './components/About';
 
 function App() {
 
-  const [mode, setMode] = useState('light')
-  const [text, setText] = useState('Dark')
+  const [mode, setMode] = useState('light');
+  const [text, setText] = useState('Dark');
+  const [alert, setAlert] = useState(null);
   
+  const showAlert = (message, type) =>{
+      setAlert({
+        msg : message,
+        type : type             //type : is different from :type
+      })
+      setTimeout(() => {
+        setAlert(null);
+      }, 3000);
+  }
   const onToggle = ()=>{
     if(mode=== 'light'){
       setMode('dark')
       setText('Light')
       document.body.style.backgroundColor = "#202b36"
+      showAlert("Dark Mode enabled successfullly", "success")
     }else{
       setMode('light')
       setText('Dark')
       document.body.style.backgroundColor = "white"
+      showAlert("Light Mode enabled successfullly", "success")
     }
   }
   return (
     <>
-      <Navbar theme = {mode} Mode = {text} toggleMode={onToggle} />
+      <Router>
+      <Navbar title = 'TextUtils' theme = {mode} Mode = {text} toggleMode={onToggle} />
+      <Alert alert = {alert} />
       <div className="container my-3">
-        <TextForm heading = "Enter your text here" theme = {mode}/>
+      <Routes>
+          <Route exact path='/' element = {<TextForm showAlert={showAlert} heading = "Enter your text here" theme = {mode}/>}/>
+              {/* passing showAtert function as props */}
+          <Route exact path='/about' element = {<About/>}/>
+      </Routes>
       </div>
+      </Router>
     </>
   );
 }
 
-export default App;
+export default App; 
