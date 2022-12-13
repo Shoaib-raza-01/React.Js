@@ -20,7 +20,7 @@ export default function Navbar(props) {
               </li>
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
+                  Color Pallete
                 </a>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="/">Action</a></li>
@@ -30,6 +30,13 @@ export default function Navbar(props) {
                 </ul>
               </li>
             </ul>
+            <div className="container" >
+            <button className='btn btn-primary mx-2' type='button' onClick={props.toggleBlue}/>
+            <button className='btn btn-success mx-2' type='button' onClick={props.toggleGreen}/>
+            <button className='btn btn-danger mx-2' type='button' onClick={props.toggleRed}/>
+            {/* <button className='btn btn-info mx-2' type='button'/> */}
+            <button className='btn btn-warning mx-2' type='button' onClick={props.toggleYellow}/>
+            </div>
             <div className={`form-check form-switch text-${props.theme==='light'?'dark':'light'}`}>
               <input className ="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
               <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Switch {props.Mode} Mode</label>
