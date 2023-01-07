@@ -46,7 +46,7 @@ const onRed =()=>{
   showAlert("Red theme selected","success")
 }
 
-//ingo theme
+//info theme
 
 const onYellow =()=>{
   setMode('warning')
@@ -54,19 +54,19 @@ const onYellow =()=>{
   showAlert("Yellow theme selected","success")
 }
 
-  const onToggle = ()=>{
-    if(mode=== 'light' || mode === '#0066ff'){
-      setMode('dark')
-      setText('Light')
-      document.body.style.backgroundColor = "#202b36"                 // change the color of the whole body 
-      showAlert("Dark Mode enabled successfullly", "success")
-    }else{
-      setMode('light')
-      setText('Dark')
-      document.body.style.backgroundColor = "white"
-      showAlert("Light Mode enabled successfullly", "success")
-    }
+const onToggle = ()=>{
+  if(mode=== 'light' || mode === '#0066ff'){
+    setMode('dark')
+    setText('Light')
+    document.body.style.backgroundColor = "#202b36"                 // change the color of the whole body 
+    showAlert("Dark Mode enabled successfullly", "success")
+  }else{
+    setMode('light')
+    setText('Dark')
+    document.body.style.backgroundColor = "white"
+    showAlert("Light Mode enabled successfullly", "success")
   }
+}
   return (
     <>
       <Router>
